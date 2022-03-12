@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../business_logic/cubit/age_calculator_cubit.dart';
+import '../../../business_logic/bloc/age_calculator_bloc.dart';
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget(
@@ -20,8 +20,8 @@ class ButtonWidget extends StatelessWidget {
         minimumSize: const Size(175, 50),
       ),
       onPressed: () {
-        BlocProvider.of<AgeCalculatorCubit>(context)
-            .updateAgeVal(ageController.text.toString());
+        BlocProvider.of<AgeCalculatorBloc>(context)
+            .add(GetStage(ageval: ageController.text.toString()));
       },
       icon: const Icon(Icons.flutter_dash),
       label: const Text('Calculate'),
